@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bike rental</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="/static/style_one.css" rel="stylesheet">
+</head>
+<body class="bg-info">
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bnVzYSUyMHBlbmlkYXxlbnwwfHwwfHw%3D&w=1000&q=80');
+        background-repeat: no-repeat;
+
+        background-size: cover;
+    }
+</style>
+
+
+<div class="nav-scroller box-shadow row ml-05 mr-05">
+    <nav class="nav white-underline">
+        {{if .Mail }}
+            <a class="col-3 col-md-3 col-xs-3" href="/">Home</a>
+            <a class="col-3 col-md-3 col-xs-3" href="/profile">{{.Mail}}</a>
+            <a class="col-3 col-md-3 col-xs-3" href="/logout">logout</a>
+        {{else}}
+            <a class="col-3 col-md-3 col-xs-3" href="/">Home</a>
+            <a class="col-3 col-md-3 col-xs-3" href="/login">Login</a>
+
+        {{end}}
+    </nav>
+</div>
+
+<div class="container">
+    <div class="box-shadow">
+        <h2 class="text-capitalize ml-50 text-white lh-100">{{ .Bike.Bmodel}}</h2>
+    </div>
+    <div class="card bg-white box-shadow text-capitalize">
+        <div class="card-body pb-02 pt-02 ml-05 mr-05">
+            <h4 class="card-text text-capitalize">Rs.  {{ .Bike.Price }}/day</h4>
+        </div>
+    </div>
+    </br>
+
+
+    <div class="card bg-white box-shadow text-capitalize">
+            <div class="card-body pb-02 pt-02 ml-05 mr-05">
+            <a class="btn btn-outline-dark" href="/booking/search" role="button" style="text-transform:none">
+                <img width="20px" style="margin-bottom:3px; margin-right:5px" alt=" book " src="https://static.vecteezy.com/system/resources/previews/004/853/586/original/booking-ticket-order-line-icon-illustration-logo-template-suitable-for-many-purposes-free-vector.jpg" />
+                BOOK IT!
+            </a>
+        </div>
+    </div>
+
+    </br>
+</div>
+</body>
+</html>

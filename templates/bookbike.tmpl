@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>bike rental</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="/static/booking_c.css" rel="stylesheet">
+</head>
+<body class="bg-info">
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1609202748711-feef2cdc7da3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bW90b3JjeWNsZSUyMHRyaXB8ZW58MHx8MHx8&w=1000&q=80');
+        background-repeat: no-repeat;
+
+        background-size: cover;
+    }
+</style>
+<div class="nav-scroller box-shadow row ml-05 mr-05">
+    <nav class="nav nav-underline">
+    {{if .Mail }}
+        <a class="col-3 col-md-3 col-xs-3" href="/profile">{{.Mail}}</a>
+        <a class="nav-link col-3 col-md-3 col-xs-3" href="/admin/bike/create">AddBike</a>
+        <a class="nav-link font-weight-bold col-3 col-md-3 col-xs-3 active" href="/">Home</a>
+        <a class="col-3 col-md-3 col-xs-3" href="/logout">logout</a>
+    {{else}}
+         <a class="col-3 col-md-3 col-xs-3" href="/login">Login</a>
+         <a class="nav-link font-weight-bold col-3 col-md-3 col-xs-3 active" href="/">Home</a>
+     {{end}}
+
+    </nav>
+</div>
+<div class="container pl-05 pr-05">
+    <div class="box-shadow">
+        <h1 class="">List of all available bikes</h1>
+    </div>
+    {{with .List}}
+    {{ range . }}
+    <div class="card bg-white box-shadow">
+        <div class="card-body pl-05 pr-05 pb-02">
+            <h4 class="card-title text-capitalize pt-02">{{.Bmodel }}</h4>
+            <h4 class="card-text text-capitalize"> Price-Rs.{{ .Price }}</h4>
+            <a href="/book/{{.Bmodel}}/{{.Booked}}/{{.Till}}/{{.BikeID}}" class="card-link">book Bike </a>
+        </div>
+    </div>
+    {{ end }}
+    {{ end }}
+</div>
+</body>
+</html>
+
+
+
+
+

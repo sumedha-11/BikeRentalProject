@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bike rental</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- Custom styles for this template -->
+  <link href="/static/style_one.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-image: url('https://moustachescapes.com/blog/wp-content/uploads/2021/02/Leh-bike-trip.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body class="bg-light">
+<div class="nav-scroller box-shadow row ml-05 mr-05">
+    <nav class="nav nav-underline">
+        {{if .Mail }}
+             <a class="col-3 col-md-3 col-xs-3" href="/profile">{{.Mail}}</a>
+             <a class="nav-link col-3 col-md-3 col-xs-3" href="/admin/bike/create">AddBike</a>
+             <a class="col-3 col-md-3 col-xs-3" href="/logout">logout</a>
+        {{else}}
+            <a class="col-3 col-md-3 col-xs-3" href="/login">Login</a>
+        {{end}}
+    </nav>
+</div>
+<div class="container pl-05 pr-05">
+  <div class="box-shadow">
+      <h2 class="text-capitalize ml-05 text-white lh-100"><b>List of all available bikes<b></h2>
+    </div>
+    {{ with .List }}
+        {{ range . }}
+        <div class="card bg-white box-shadow">
+          <div class="card-body pl-05 pr-05 pb-02">
+            <h4 class="card-title text-capitalize pt-02">{{ .Bmodel }}</h4>
+                <p class="card-text text-capitalize">Rs. {{ .Price }}</p>
+                <a href="/bike/view/{{ .ID }}" class="card-link">view Bike </a>
+          </div>
+        </div>
+        {{ end }}
+    {{ end }}
+    </br>
+</div>
+</body>
+</html>
